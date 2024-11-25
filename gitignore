@@ -1,0 +1,67 @@
+# Byte-compiled files
+*.pyc
+*.pyo
+__pycache__/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Environment variables and secrets
+.env
+*.env
+
+# Logs
+*.log
+*.out
+*.err
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Virtual environment folders
+venv/
+.env/
+env/
+
+# Python package folders
+*.egg-info/
+.eggs/
+
+# Pytest cache
+.pytest_cache/
+
+# SQLite database files
+*.sqlite3
+*.db
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+
+# VSCode settings (if using Visual Studio Code)
+.vscode/
+
+# Data files
+*.csv
+*.tsv
+*.parquet
+*.json
+
+# Output or intermediate files
+*.bak
+*.old
+*.zip
+*.tar
+*.gz
+*.pickle
+*.h5
+
+# Analytics or data warehouse outputs (customize as needed)
+*.sql
+*.dbml
+
+# Ignore compiled Python files in specific folders
+**/__pycache__/
