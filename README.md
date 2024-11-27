@@ -87,6 +87,50 @@ CREATE TABLE order_reviews (
     FOREIGN KEY (order_id) REFERENCES orders(order_id)
 );
 
+## Passo 4: Implementamos um script para carregar os dados nas tabelas criadas
+
+Para implementar um script que carregue os dados nas tabelas criadas no MySQL, nós usamos Python junto com a biblioteca pandas para manipulação de dados e a mysql-connector-python para a conexão com o banco de dados:
+
+### 1. Instalamos as Bibliotecas Necessárias:
+```sh
+pip install pandas mysql-connector-python
+
+import pandas as pd
+import mysql.connector
+
+# Configurações da conexão com o banco de dados
+db_config = {
+    'user': 'seu_usuario',
+    'password': 'sua_senha',
+    'host': 'localhost',
+    'database': 'olist_db'
+}
+
+# Conectar ao banco de dados
+conn = mysql.connector.connect(**db_config)
+cursor = conn.cursor()
+
+# Função para carregar dados em uma tabela
+def load_data(table_name, csv_file):
+    data = pd.read_csv(csv_file)
+    for row in data.itertuples(index=False):
+        placeholders = ', '.join(['%s'] * len(row))
+        columns = ', '.join(data.columns)
+        sql = f"INSERT INTO {table_name} ({columns}) VALUES ({placeholders})"
+        cursor.execute(sql, row)
+    conn.commit()
+
+# Carregar dados em cada tabela
+load_data('customers', 'path/to/customers.csv')
+load_data('orders', 'path/to/orders.csv')
+load_data('products', 'path/to/products.csv')
+load_data('order_items', 'path/to/order_items.csv')
+load_data('order_reviews', 'path/to/order_reviews.csv')
+
+# Fechar a conexão
+cursor.close()
+conn.close()
+
 
 
 
