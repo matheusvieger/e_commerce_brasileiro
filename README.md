@@ -141,46 +141,46 @@ conn.close()
 Criamos uma tabela fato que agregue as vendas por ano e mês. Esta tabela conterá as principais métricas que desejamos analisar, como o total de vendas.
 ```sql
 CREATE TABLE fact_sales (
-    date_id INT,
-    total_sales DECIMAL(10, 2),
+    date_id INT NOT NULL,
+    total_sales DECIMAL(10, 2) NOT NULL,
     PRIMARY KEY (date_id),
     FOREIGN KEY (date_id) REFERENCES dim_date(date_id)
 );
 
 CREATE TABLE dim_date (
-    date_id INT PRIMARY KEY,
-    year INT,
-    month INT,
-    day INT
+    date_id INT NOT NULL PRIMARY KEY,
+    year INT NOT NULL,
+    month INT NOT NULL,
+    day INT NOT NULL
 );
 
 CREATE TABLE dim_product (
-    product_id VARCHAR(255) PRIMARY KEY,
-    product_category_name VARCHAR(255)
+    product_id VARCHAR(255) NOT NULL PRIMARY KEY,
+    product_category_name VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE dim_customer (
-    customer_id VARCHAR(255) PRIMARY KEY,
-    customer_city VARCHAR(255),
-    customer_state CHAR(2)
+    customer_id VARCHAR(255) NOT NULL PRIMARY KEY,
+    customer_city VARCHAR(255) NOT NULL,
+    customer_state CHAR(2) NOT NULL
 );
 
 CREATE TABLE dim_seller (
-    seller_id VARCHAR(255) PRIMARY KEY,
-    seller_city VARCHAR(255),
-    seller_state CHAR(2)
+    seller_id VARCHAR(255) NOT NULL PRIMARY KEY,
+    seller_city VARCHAR(255) NOT NULL,
+    seller_state CHAR(2) NOT NULL
 );
 
 
 CREATE TABLE wide_sales (
-    year INT,
-    month INT,
-    product_category_name VARCHAR(255),
-    customer_city VARCHAR(255),
-    customer_state CHAR(2),
-    seller_city VARCHAR(255),
-    seller_state CHAR(2),
-    total_sales DECIMAL(10, 2),
+    year INT NOT NULL,
+    month INT NOT NULL,
+    product_category_name VARCHAR(255) NOT NULL,
+    customer_city VARCHAR(255) NOT NULL,
+    customer_state CHAR(2) NOT NULL,
+    seller_city VARCHAR(255) NOT NULL,
+    seller_state CHAR(2) NOT NULL,
+    total_sales DECIMAL(10, 2) NOT NULL,
     PRIMARY KEY (year, month, product_category_name, customer_city, customer_state, seller_city, seller_state)
 );
 
@@ -339,8 +339,3 @@ etl_process()
 trans_conn.close()
 analytical_conn.close()
 ```
-
-
-
-
-
