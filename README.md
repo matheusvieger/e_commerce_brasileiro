@@ -20,7 +20,7 @@ Escolhemos o MySQL como Sistema de Gerenciamento de Banco de Dados (SGBD) para e
 
 - **Popularidade e Suporte**: MySQL é um dos SGBDs mais populares no mundo, o que significa que há uma vasta comunidade de usuários e desenvolvedores prontos para ajudar, além de uma documentação abrangente.
 - **Desempenho**: MySQL é conhecido por seu desempenho eficiente em consultas e transações, o que pode ser vantajoso ao trabalhar com grandes volumes de dados, como os presentes nesse conjunto.
-- **Escalabilidade**: MySQL oferece boas opções de escalabilidade, tanto
+- **Escalabilidade**: MySQL oferece boas opções de escalabilidade.
 
 ## Passo 3: Criamos as tabelas no banco de dados com base na documentação do Kaggle
 
