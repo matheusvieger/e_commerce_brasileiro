@@ -86,7 +86,7 @@ CREATE TABLE order_reviews (
     review_answer_timestamp DATETIME,
     FOREIGN KEY (order_id) REFERENCES orders(order_id)
 );
-
+```
 
 ## Passo 4: Implementamos um script para carregar os dados nas tabelas criadas
 
@@ -131,6 +131,7 @@ load_data('order_reviews', 'path/to/order_reviews.csv')
 # Fechar a conexão
 cursor.close()
 conn.close()
+```
 
 ## 2. Modelagem de Banco de Dados Analítico
 
@@ -223,7 +224,7 @@ load_data('wide_sales', 'caminho/para/wide_sales.csv')
 # Fechar a conexão
 cursor.close()
 conn.close()
-
+```
 
 ## 3. Fluxo de Transformação de Dados
 
@@ -337,7 +338,7 @@ etl_process()
 # Fechar as conexões
 trans_conn.close()
 analytical_conn.close()
-
+```
 
 
 
