@@ -32,58 +32,58 @@ CREATE DATABASE olist_db;
 USE olist_db;
 
 CREATE TABLE customers (
-    customer_id VARCHAR(255) PRIMARY KEY,
-    customer_unique_id VARCHAR(255),
-    customer_zip_code_prefix INT,
-    customer_city VARCHAR(255),
-    customer_state CHAR(2)
+    customer_id VARCHAR(255) NOT NULL PRIMARY KEY,
+    customer_unique_id VARCHAR(255) NOT NULL,
+    customer_zip_code_prefix INT NOT NULL,
+    customer_city VARCHAR(255) NOT NULL,
+    customer_state CHAR(2) NOT NULL
 );
 
 CREATE TABLE orders (
-    order_id VARCHAR(255) PRIMARY KEY,
-    customer_id VARCHAR(255),
-    order_status VARCHAR(255),
-    order_purchase_timestamp DATETIME,
-    order_approved_at DATETIME,
-    order_delivered_carrier_date DATETIME,
-    order_delivered_customer_date DATETIME,
-    order_estimated_delivery_date DATETIME,
+    order_id VARCHAR(255) NOT NULL PRIMARY KEY,
+    customer_id VARCHAR(255) NOT NULL,
+    order_status VARCHAR(255) NOT NULL,
+    order_purchase_timestamp DATETIME NOT NULL,
+    order_approved_at DATETIME NOT NULL,
+    order_delivered_carrier_date DATETIME NOT NULL,
+    order_delivered_customer_date DATETIME NOT NULL,
+    order_estimated_delivery_date DATETIME NOT NULL,
     FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
 );
 
 CREATE TABLE products (
-    product_id VARCHAR(255) PRIMARY KEY,
-    product_category_name VARCHAR(255),
-    product_name_length INT,
-    product_description_length INT,
-    product_photos_qty INT,
-    product_weight_g FLOAT,
-    product_length_cm FLOAT,
-    product_height_cm FLOAT,
-    product_width_cm FLOAT
+    product_id VARCHAR(255) NOT NULL PRIMARY KEY,
+    product_category_name VARCHAR(255) NOT NULL,
+    product_name_length INT NOT NULL,
+    product_description_length INT NOT NULL,
+    product_photos_qty INT NOT NULL,
+    product_weight_g FLOAT NOT NULL,
+    product_length_cm FLOAT NOT NULL,
+    product_height_cm FLOAT NOT NULL,
+    product_width_cm FLOAT NOT NULL
 );
 
 CREATE TABLE order_items (
-    order_id VARCHAR(255),
-    order_item_id INT,
-    product_id VARCHAR(255),
-    seller_id VARCHAR(255),
-    shipping_limit_date DATETIME,
-    price FLOAT,
-    freight_value FLOAT,
+    order_id VARCHAR(255) NOT NULL,
+    order_item_id INT NOT NULL,
+    product_id VARCHAR(255) NOT NULL,
+    seller_id VARCHAR(255) NOT NULL,
+    shipping_limit_date DATETIME NOT NULL,
+    price FLOAT NOT NULL,
+    freight_value FLOAT NOT NULL,
     PRIMARY KEY (order_id, order_item_id),
     FOREIGN KEY (order_id) REFERENCES orders(order_id),
     FOREIGN KEY (product_id) REFERENCES products(product_id)
 );
 
 CREATE TABLE order_reviews (
-    review_id VARCHAR(255) PRIMARY KEY,
-    order_id VARCHAR(255),
-    review_score INT,
-    review_comment_title TEXT,
-    review_comment_message TEXT,
-    review_creation_date DATETIME,
-    review_answer_timestamp DATETIME,
+    review_id VARCHAR(255) NOT NULL PRIMARY KEY,
+    order_id VARCHAR(255) NOT NULL,
+    review_score INT NOT NULL,
+    review_comment_title TEXT NOT NULL,
+    review_comment_message TEXT NOT NULL,
+    review_creation_date DATETIME NOT NULL,
+    review_answer_timestamp DATETIME NOT NULL,
     FOREIGN KEY (order_id) REFERENCES orders(order_id)
 );
 ```
